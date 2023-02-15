@@ -1,41 +1,94 @@
 // console.log('Test')
 
-
-
-// array con immagini
-const slides = [
-    './img/01.jpg',
-    './img/02.jpg',
-    './img/03.jpg',
-    './img/04.jpg',
-    './img/05.jpg',
-]
-
 // Prendere le slide da html
-const slideElements = document.getElementsByClassName('slide');
-// console.log(slideElements);
+const slideBoxElements = document.getElementById('slides');
+// console.log(slideBoxElements);
 
 // Prendere freccia a sinistra
 const leftArrowElement = document.querySelector('.carousel__arrow.arrow-left')
 // Prendere freccia a destra
 const rightArrowElement = document.querySelector('.carousel__arrow.arrow-right')
-// console.log(rightArrowElement)
 
 // Creo la variabile indice che determina a quale slide siamo
 let indiceSlideAttiva = 0;
 
+
+// array di oggetti 
+const images = [
+    {
+        image: './img/01.webp',
+        title: 'Marvel\'s Spiderman Miles Morale',
+        text: 'Experience the rise of Miles Morales as the new hero masters incredible, explosive new powers to become his own Spider-Man.',
+    }, {
+        image: './img/02.webp',
+        title: 'Ratchet & Clank: Rift Apart',
+        text: 'Go dimension-hopping with Ratchet and Clank as they take on an evil emperor from another reality.',
+    }, {
+        image: './img/03.webp',
+        title: 'Fortnite',
+        text: "Grab all of your friends and drop into Epic Games Fortnite, a massive 100 - player face - off that combines looting, crafting, shootouts and chaos.",
+    }, {
+        image: './img/04.webp',
+        title: 'Stray',
+        text: 'Lost, injured and alone, a stray cat must untangle an ancient mystery to escape a long-forgotten city',
+    }, {
+        image: './img/05.webp',
+        title: "Marvel's Avengers",
+        text: 'Marvel\'s Avengers is an epic, third-person, action-adventure game that combines an original, cinematic story with single-player and co-operative gameplay.',
+    }
+];
+
+
+
+
+for (let i = 0; i < images.length; i++) {
+
+    let slideCorrente = images[i];
+
+    const { image, title, text} = slideCorrente;
+
+    // console.log('title:', title)
+    // console.log('text:', text)
+    // console.log('image:', image)
+
+    let slide = `
+    <div class="slide">
+        <img class="position-relative" src="${image}" alt="foto di">
+        <div class="description-box">
+            <h3>${title}</h3>
+            <p>${text}</p>
+        </div>
+    </div>
+    `;
+
+    slideBoxElements.innerHTML += slide;
+
+}
+
+
+const primaSlide = document.querySelector('.slide');
+// console.log(primaSlide)
+primaSlide.classList.add('active');
+
+
+const slideElements = document.querySelectorAll('.slide');
+
+console.log(slideElements);
 
 
 // Tasto destra -> avanti
 
 rightArrowElement.addEventListener('click', function () {
 
-	console.log('current slide', indiceSlideAttiva);
+	// console.log('current slide', indiceSlideAttiva);
 
-    if (indiceSlideAttiva <  slideElements.length - 1){
+    // console.log(images.length);
+
+    if (indiceSlideAttiva <  images.length - 1){
     
-    
+        console.log('dentro')
         let slideCorrente = slideElements[indiceSlideAttiva];
+        console.log(slideCorrente)
         // togliendo la classe active
         slideCorrente.classList.remove('active');
 
@@ -52,7 +105,8 @@ rightArrowElement.addEventListener('click', function () {
 
 })
 
-// Tasto sinistra -> indietro
+
+// // Tasto sinistra -> indietro
 
 leftArrowElement.addEventListener('click', function () {
 
@@ -77,21 +131,5 @@ leftArrowElement.addEventListener('click', function () {
 
 
 })
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
