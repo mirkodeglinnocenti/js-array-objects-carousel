@@ -39,17 +39,37 @@ const images = [
 ];
 
 
+// Ciclo for classico
 
+// for (let i = 0; i < images.length; i++) {
 
-for (let i = 0; i < images.length; i++) {
+//     let slideCorrente = images[i];
 
-    let slideCorrente = images[i];
+//     const { image, title, text} = slideCorrente;
 
-    const { image, title, text} = slideCorrente;
+//     // console.log('title:', title)
+//     // console.log('text:', text)
+//     // console.log('image:', image)
 
-    // console.log('title:', title)
-    // console.log('text:', text)
-    // console.log('image:', image)
+//     let slide = `
+//     <div class="slide">
+//         <img class="position-relative" src="${image}" alt="foto di">
+//         <div class="description-box">
+//             <h3>${title}</h3>
+//             <p>${text}</p>
+//         </div>
+//     </div>
+//     `;
+
+//     slideBoxElements.innerHTML += slide;
+
+// }
+
+// forEach
+
+images.forEach((el, i, images) => {
+    
+    const { image, title, text} = el;
 
     let slide = `
     <div class="slide">
@@ -63,7 +83,7 @@ for (let i = 0; i < images.length; i++) {
 
     slideBoxElements.innerHTML += slide;
 
-}
+})
 
 
 const primaSlide = document.querySelector('.slide');
