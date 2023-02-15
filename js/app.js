@@ -106,7 +106,6 @@ rightArrowElement.addEventListener('click', function () {
 
     if (indiceSlideAttiva <  images.length - 1){
     
-        console.log('dentro')
         let slideCorrente = slideElements[indiceSlideAttiva];
         console.log(slideCorrente)
         // togliendo la classe active
@@ -118,6 +117,18 @@ rightArrowElement.addEventListener('click', function () {
         // aggiungiamo la classe active alla seconda slide
         prossimaSlide.classList.add('active');
 
+    } else if (indiceSlideAttiva =  images.length - 1) {
+
+        let slideCorrente = slideElements[indiceSlideAttiva];
+        console.log(slideCorrente)
+        // togliendo la classe active
+        slideCorrente.classList.remove('active');
+
+        indiceSlideAttiva = 0;
+
+        let prossimaSlide = slideElements[indiceSlideAttiva];
+        // aggiungiamo la classe active alla seconda slide
+        prossimaSlide.classList.add('active');
     }
 
     console.log('current slide', indiceSlideAttiva);
@@ -140,6 +151,19 @@ leftArrowElement.addEventListener('click', function () {
         slideCorrente.classList.remove('active');
 
         indiceSlideAttiva--;
+
+        let prossimaSlide = slideElements[indiceSlideAttiva];
+        // aggiungiamo la classe active alla seconda slide
+        prossimaSlide.classList.add('active');
+
+    } else if (indiceSlideAttiva === 0){
+    
+    
+        let slideCorrente = slideElements[indiceSlideAttiva];
+        // togliendo la classe active
+        slideCorrente.classList.remove('active');
+
+        indiceSlideAttiva = images.length - 1;
 
         let prossimaSlide = slideElements[indiceSlideAttiva];
         // aggiungiamo la classe active alla seconda slide
