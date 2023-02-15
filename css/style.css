@@ -36,3 +36,13 @@
 .carousel-box .carousel__arrow.arrow-right {
 	right: 15px;
 }
+
+.description-box{
+	color: white;
+	background-color: rgb(0, 0, 0, 0.5);
+	text-align: end;
+	position: absolute;
+	bottom: 0%;
+	left: 40%;
+	padding: 10px 20px;
+}

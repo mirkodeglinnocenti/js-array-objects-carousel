@@ -2,9 +2,6 @@
 
 
 
-
-
-
 // array con immagini
 const slides = [
     './img/01.jpg',
@@ -98,18 +95,3 @@ leftArrowElement.addEventListener('click', function () {
 
 
 
-
-
-
-
-// rightArrowElement.addEventListener('click', function () {
-
-//     let firstSlide = slideElements[0]
-//     togliendo la classe active
-//     firstSlide.classList.remove('active')
-
-//     let secondSlide = slideElements[1]
-//     aggiungiamo la classe active alla seconda slide
-//     secondSlide.classList.add('active')
-
-// })
