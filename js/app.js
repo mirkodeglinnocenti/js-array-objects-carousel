@@ -5,9 +5,9 @@ const slideBoxElements = document.getElementById('slides');
 // console.log(slideBoxElements);
 
 // Prendere freccia a sinistra
-const leftArrowElement = document.querySelector('.carousel__arrow.arrow-left')
+const leftArrowElement = document.querySelector('.carousel__arrow.arrow-left');
 // Prendere freccia a destra
-const rightArrowElement = document.querySelector('.carousel__arrow.arrow-right')
+const rightArrowElement = document.querySelector('.carousel__arrow.arrow-right');
 
 // Creo la variabile indice che determina a quale slide siamo
 let indiceSlideAttiva = 0;
@@ -39,7 +39,7 @@ const images = [
 ];
 
 
-// Ciclo for classico
+//////////// Ciclo for classico
 
 // for (let i = 0; i < images.length; i++) {
 
@@ -65,7 +65,7 @@ const images = [
 
 // }
 
-// forEach
+/////////// forEach
 
 images.forEach((el, i, images) => {
     
@@ -98,16 +98,49 @@ console.log(slideElements);
 
 // Tasto destra -> avanti
 
-rightArrowElement.addEventListener('click', function () {
+rightArrowElement.addEventListener('click', rightSlide);
 
-	// console.log('current slide', indiceSlideAttiva);
 
-    // console.log(images.length);
+// // Tasto sinistra -> indietro
+
+leftArrowElement.addEventListener('click', leftSlide);
+
+
+// autoplay
+let autoplay = setInterval(rightSlide, 3000);
+
+// Interrompere autoplay quando il mouse entra dentro le slide
+slideBoxElements.addEventListener('mouseenter' , () => {
+    console.log('mouse entrato');
+
+    clearInterval(autoplay);
+    autoplay = undefined;
+
+})
+
+// Ripremdere autoplay quando il mouse esce dalle slide
+slideBoxElements.addEventListener('mouseleave' , () => {
+    console.log('mouse uscito');
+
+    autoplay = setInterval(rightSlide, 3000);
+
+})
+
+
+
+
+
+// Funzioni
+
+
+// Slide successiva
+
+function rightSlide() {
 
     if (indiceSlideAttiva <  images.length - 1){
     
         let slideCorrente = slideElements[indiceSlideAttiva];
-        console.log(slideCorrente)
+        console.log(slideCorrente);
         // togliendo la classe active
         slideCorrente.classList.remove('active');
 
@@ -120,7 +153,7 @@ rightArrowElement.addEventListener('click', function () {
     } else if (indiceSlideAttiva =  images.length - 1) {
 
         let slideCorrente = slideElements[indiceSlideAttiva];
-        console.log(slideCorrente)
+        console.log(slideCorrente);
         // togliendo la classe active
         slideCorrente.classList.remove('active');
 
@@ -134,12 +167,14 @@ rightArrowElement.addEventListener('click', function () {
     console.log('current slide', indiceSlideAttiva);
 
 
-})
+}
 
 
-// // Tasto sinistra -> indietro
 
-leftArrowElement.addEventListener('click', function () {
+// Slide precedente
+
+
+function leftSlide() {
 
 	console.log('current slide', indiceSlideAttiva);
 
@@ -174,6 +209,4 @@ leftArrowElement.addEventListener('click', function () {
     console.log('current slide', indiceSlideAttiva);
 
 
-})
-
-
+}
